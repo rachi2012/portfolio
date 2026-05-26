@@ -128,3 +128,50 @@ To run on a custom VM or server container:
    pm2 start npm --name "storytelling-portfolio" -- start
    ```
 5. Configure Nginx as a reverse proxy passing traffic on port 80/443 down to port 3000.
+
+---
+
+## 🤖 LLM Evaluation Benchmark Suite
+
+This repository includes a comprehensive, production-grade LLM evaluation framework designed to benchmark code generation capabilities on complex, concurrent, and mathematically-intensive domain tasks.
+
+### 📋 Overview of the Evaluation
+We evaluate LLM capabilities using a real-world **Fintech Real-Time sliding-Window Rate Limiter & Geo-Velocity Fraud Risk Engine** task. This problem space tests several dimensions of code quality:
+1. **Concurrency Controls**: Measures ability to manage resource locking at granular levels (preventing global synchronization bottlenecks).
+2. **Algorithmic Efficiency**: Evaluates time complexity optimizations ($O(K)$ sliding window eviction via `deque` vs $O(N)$ list-scans).
+3. **Mathematical Rigor**: Assesses geodetic coordinate calculations (Haversine formula) and boundary edge-case handling.
+4. **Defensive Programming**: Looks at validation schemas and domain-specific exception hierarchies.
+
+### 📂 Repository Structure (Evaluation Assets)
+We have added the following benchmark assets to the root directory:
+```markdown
+portfolio/
+├── prompt.md                # Original domain-specific LLM coding prompt
+├── golden_response.py       # Production-quality reference benchmark solution
+├── justification.md         # Structured side-by-side comparison framework (Response A vs B)
+└── BUILD_GUIDE.md           # Architectural deep-dive & construction explanation
+```
+
+### 🚀 Running & Testing the Benchmark Code
+
+The reference benchmark code is built entirely in **pure Python** (requiring only standard libraries) to ensure seamless portability across testing environments.
+
+#### 1. Running the Automated Unit Test Suite
+To verify core risk evaluations, validation exceptions, mathematical limits, and parallel thread stability, execute the file directly:
+```bash
+python golden_response.py
+```
+
+#### 2. Launching the Multi-Threaded Ingestion Simulator
+To trigger a concurrent simulation with live client workers generating transactions and shifting coordinates in real-time, append the `--simulate` flag:
+```bash
+python golden_response.py --simulate
+```
+
+### 🔬 Evaluation Methodology
+Our evaluation process grades LLM submissions along a strict multi-dimensional matrix:
+- **Technical Constraints (Pass/Fail)**: Compiles without dependencies, executes thread-safe logic under load, and uses custom error classes.
+- **Performance Profiling (Quantitative)**: Verifies eviction time complexity scales at $O(K)$ and averages execution latency under concurrent thread loops.
+- **Architectural Soundness (Qualitative)**: Reviews separation of concerns, lock granularity (global lock vs striped client locks), and proper encapsulation.
+- **Edge-Case Resilience (Adversarial)**: Ingests negative amounts, out-of-bounds GPS coordinates, malformed timestamps, and out-of-order/identical timestamp streams to verify system stability.
+
