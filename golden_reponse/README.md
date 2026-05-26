@@ -1,25 +1,24 @@
 # 🌌 Obsidian & Cybernetic Glow - Storytelling Portfolio
 
-An immersive, highly performant, accessible, and responsive scroll-based storytelling portfolio built with **Next.js 16**, **Framer Motion**, and **Tailwind CSS v4**.
+An immersive, highly performant, accessible, and responsive scroll-based storytelling portfolio built with Next.js 16, Framer Motion, and Tailwind CSS v4.
+
+
+ Key Architectural Features
+
+-Immersive Scroll Storyboard**: Interactive timelines and visual components that stagger, draw pathways, and slide using fluid physics (`framer-motion`) and GPU-accelerated layout transforms.
+-Deep Obsidian & Cybernetic Styling**: Dynamic glassmorphic panels, mesh gradient background bubbles, and neon glowing focus outlines.
+-Secure Modal Contact Form**:
+  -Focus-Trapping & Esc-Key Listening**: Full keyboard access conforming strictly to modern accessibility requirements.
+  -Honeypot Spam Defense**: Invisible validation input (`website_honey`) to silently drop bot API calls.
+  -Server-Side IP Throttling**: Restricts requests to 3 submissions per hour per client to mitigate DDoS/Spam bottlenecks.
+  -XSS & Injection Protection**: HTML sanitization and string entity escapes in API payloads.
+-Nodemailer Notification Dispatcher**: Sends detailed HTML/text transcripts of submissions directly to the portfolio owner.
+-Local File-based Database**: Stores form submissions securely in `data/submissions.json` with client IPs and UTC ISO timestamps.
+-SMTP dynamic Fallback**: Runs on a live SMTP host, falling back automatically to an Ethereal developer sandbox generating mail-box preview links directly to server logs if live parameters are omitted.
 
 ---
 
-## 🚀 Key Architectural Features
-
-- **Immersive Scroll Storyboard**: Interactive timelines and visual components that stagger, draw pathways, and slide using fluid physics (`framer-motion`) and GPU-accelerated layout transforms.
-- **Deep Obsidian & Cybernetic Styling**: Dynamic glassmorphic panels, mesh gradient background bubbles, and neon glowing focus outlines.
-- **Secure Modal Contact Form**:
-  - **Focus-Trapping & Esc-Key Listening**: Full keyboard access conforming strictly to modern accessibility requirements.
-  - **Honeypot Spam Defense**: Invisible validation input (`website_honey`) to silently drop bot API calls.
-  - **Server-Side IP Throttling**: Restricts requests to 3 submissions per hour per client to mitigate DDoS/Spam bottlenecks.
-  - **XSS & Injection Protection**: HTML sanitization and string entity escapes in API payloads.
-- **Nodemailer Notification Dispatcher**: Sends detailed HTML/text transcripts of submissions directly to the portfolio owner.
-- **Local File-based Database**: Stores form submissions securely in `data/submissions.json` with client IPs and UTC ISO timestamps.
-- **SMTP dynamic Fallback**: Runs on a live SMTP host, falling back automatically to an Ethereal developer sandbox generating mail-box preview links directly to server logs if live parameters are omitted.
-
----
-
-## 📂 Folder Structure
+ Folder Structure
 
 ```markdown
 portfolio/
